@@ -9,7 +9,11 @@ def test_patterns(text, patterns = []):
         try:
             match = p.search(text)
             a1 = match.group(1)
+            if '@' in a1:
+                a1 = a1.replace("@","")
             a2 = match.group(2)
+            if '@' in a2:
+                a1 = a1.replace("@","")
             a3 = match.group(3)
             a4 = match.group(4)
             a5 = match.group(5)
@@ -24,7 +28,7 @@ if __name__ == '__main__':
     lines = i.readlines()
     ls = []
     for line in lines:
-        ls.append(test_patterns(line,['([^\s>]+\s?)(@|\sat\s ){1}([\s]?[\w|\d]*[\s]?)(\.|dot){1}([\s]?[\w]+)']))
+        ls.append(test_patterns(line,['([^\s>]+)\s*(/at/|@@?|at|\[at\])\s*(\w*\d*)\s*(/dot/|\.|dot|\[dot\])\s?(\S*)']))
     o = open(outfile,'w')
     for line in ls:
         o.write(line)
