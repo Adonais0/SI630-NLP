@@ -28,7 +28,7 @@ if __name__ == '__main__':
     lines = i.readlines()
     ls = []
     for line in lines:
-        ls.append(test_patterns(line,['([^\s>]+)\s*(/at/|@@?|at|\[at\])\s*(\w*\d*)\s*(/dot/|\.|dot|\[dot\])\s?(\S*)']))
+        ls.append(test_patterns(line,['([^\s>]+)\s*(/at/|@@?| at |\[at\])\s*(\w*\d*)\s*(/dot/|\.|dot|\[dot\])\s?(\S*)']))
     o = open(outfile,'w')
     for line in ls:
         o.write(line)
